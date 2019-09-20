@@ -1,7 +1,17 @@
 import React from 'react'
+import './YouDied.css'
 
-export default () => (
-  <div>
-    <h1>You died</h1>
-  </div>
+interface Props {
+  cb: () => void
+}
+
+const YouDied: React.FC<Props> = ({ cb }) => (
+  <>
+    <h1 className="died">You died</h1>
+    <button className="died_button" onClick={cb}>
+      Try again
+    </button>
+  </>
 )
+
+export default YouDied

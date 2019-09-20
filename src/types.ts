@@ -2,7 +2,7 @@ export enum ARROW {
   UP = 'ArrowUp',
   DOWN = 'ArrowDown',
   LEFT = 'ArrowLeft',
-  RIGHT = '\u001B[C'
+  RIGHT = 'ArrowRight'
 }
 
 export interface Position {

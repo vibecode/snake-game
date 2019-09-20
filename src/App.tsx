@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { DIRECTION, FIELD_ROW, ARROW, Position } from './types'
-import { useInterval } from './utils'
+import { useInterval } from './useInterval'
 import { newSnakePosition } from './calcPositions'
 import { getItem } from './getItem'
 import YouDied from './YouDied'
@@ -8,15 +8,14 @@ import './App.css'
 
 export interface SnakeSegments extends Array<Position> {}
 
-const App: React.FC = () => {
-  const [direction, setDirection] = useState<Position>(DIRECTION.LEFT)
+const initialSnake = [{ x: 8, y: 8 }, { x: 8, y: 7 }, { x: 8, y: 6 }]
 
-  //TODO: extract default state
-  const [snakeSegments, setSnakeSegments] = useState<SnakeSegments>([
-    { x: 8, y: 8 },
-    { x: 8, y: 7 },
-    { x: 8, y: 6 }
-  ])
+const App: React.FC = () => {
+  const [snakeSegments, setSnakeSegments] = useState<SnakeSegments>(
+    initialSnake
+  )
+  const [direction, setDirection] = useState<Position>(DIRECTION.LEFT)
+  const [gameOver, setGameOver] = useState(false)
 
   const handleKeyPress = useCallback((ev: KeyboardEvent) => {
     const code = ev.code
@@ -42,38 +41,46 @@ const App: React.FC = () => {
   }, [handleKeyPress])
 
   const [head, ...tail] = snakeSegments
+
   const intersectsWithItself = tail.some(
-    segment => segment.x === head.x && segment.y === head.y
+    tailSegment => tailSegment.x === head.x && tailSegment.y === head.y
   )
+
+  if (intersectsWithItself && !gameOver) {
+    setGameOver(true)
+  }
 
   useInterval(
     () => {
       setSnakeSegments(segments => newSnakePosition(segments, direction))
     },
-    intersectsWithItself ? null : 100
+    gameOver ? null : 100
   )
 
-  return (
-    <div className="game-container">
-      <h1>Snake game</h1>
+  const tryAgain = () => {
+    setSnakeSegments(initialSnake)
+    setDirection(DIRECTION.LEFT)
+    setGameOver(false)
+  }
 
-      {intersectsWithItself ? (
-        <YouDied />
-      ) : (
-        <div>
-          {FIELD_ROW.map(y => (
-            <div className="grid_row" key={y}>
+  return (
+    <div className="game_box">
+      <h1 className="game_title">Snake game</h1>
+      <div className="grid">
+        {intersectsWithItself ? (
+          <YouDied cb={tryAgain} />
+        ) : (
+          FIELD_ROW.map(y => (
+            <div className="row" key={y}>
               {FIELD_ROW.map(x => (
                 <div key={x}>
-                  {getItem(x, y, snakeSegments) || (
-                    <div className="grid_pixel"> . </div>
-                  )}
+                  {getItem(x, y, snakeSegments) || <div className="pixel" />}
                 </div>
               ))}
             </div>
-          ))}
-        </div>
-      )}
+          ))
+        )}
+      </div>
     </div>
   )
 }
