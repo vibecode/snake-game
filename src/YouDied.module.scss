@@ -1,0 +1,17 @@
+.died {
+  color: red;
+  font-size: 38px;
+}
+
+.died_button {
+  margin: 0 auto;
+  padding: 8px 16px;
+  background-color: red;
+  color: white;
+  border: none;
+  font-size: 20px;
+}
+
+.died_button:hover {
+  background-color: darken(red, 5);
+}

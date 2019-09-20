@@ -4,7 +4,7 @@ import { useInterval } from './useInterval'
 import { newSnakePosition } from './calcPositions'
 import { getItem } from './getItem'
 import YouDied from './YouDied'
-import './App.css'
+import styles from './App.module.scss'
 
 export interface SnakeSegments extends Array<Position> {}
 
@@ -64,17 +64,19 @@ const App: React.FC = () => {
   }
 
   return (
-    <div className="game_box">
-      <h1 className="game_title">Snake game</h1>
-      <div className="grid">
+    <div className={styles.game_box}>
+      <h1 className={styles.game_title}>Snake game</h1>
+      <div className={styles.grid}>
         {intersectsWithItself ? (
           <YouDied cb={tryAgain} />
         ) : (
           FIELD_ROW.map(y => (
-            <div className="row" key={y}>
+            <div className={styles.row} key={y}>
               {FIELD_ROW.map(x => (
                 <div key={x}>
-                  {getItem(x, y, snakeSegments) || <div className="pixel" />}
+                  {getItem(x, y, snakeSegments) || (
+                    <div className={styles.pixel} />
+                  )}
                 </div>
               ))}
             </div>

@@ -9,6 +9,7 @@ const limitByField = (x: number) => {
   if (x < 0) {
     return FIELD_SIZE - 1
   }
+
   return x
 }
 

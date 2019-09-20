@@ -1,5 +1,5 @@
 import React from 'react'
-import './YouDied.css'
+import styles from './YouDied.module.scss'
 
 interface Props {
   cb: () => void
@@ -7,8 +7,8 @@ interface Props {
 
 const YouDied: React.FC<Props> = ({ cb }) => (
   <>
-    <h1 className="died">You died</h1>
-    <button className="died_button" onClick={cb}>
+    <h1 className={styles.died}>You died</h1>
+    <button className={styles.died_button} onClick={cb}>
       Try again
     </button>
   </>

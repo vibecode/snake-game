@@ -1,3 +1,5 @@
+$pixel-size: 20px;
+
 .game_box {
   display: flex;
   flex-direction: column;
@@ -15,8 +17,8 @@
   align-items: center;
   justify-content: center;
   border: 1px solid grey;
-  width: 320px;
-  height: 320px;
+  width: $pixel-size * 16;
+  height: $pixel-size * 16;
 }
 
 .row {
@@ -25,11 +27,10 @@
 
 .pixel {
   display: flex;
-  /* border: 1px solid grey; */
   justify-content: center;
   align-items: center;
-  width: 20px;
-  height: 20px;
+  width: $pixel-size;
+  height: $pixel-size;
   background-color: none;
 }
 
@@ -42,24 +43,18 @@
 }
 
 .snake_head {
-  width: 20px;
-  height: 20px;
+  composes: pixel;
   background-color: green;
   border: 1px solid white;
 }
 
 .snake_body {
-  width: 20px;
-  height: 20px;
+  composes: pixel;
   background-color: rgb(140, 200, 40);
   border: 1px solid white;
 }
 
 .food {
-  width: 20px;
-  height: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  composes: pixel;
   color: red;
 }
