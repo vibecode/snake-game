@@ -5,6 +5,7 @@ import { newSnakePosition } from './calcPositions'
 import { getItem } from './getItem'
 import YouDied from './YouDied'
 import styles from './App.module.scss'
+import { ReactComponent as Keys } from './Keys.svg'
 
 export interface SnakeSegments extends Array<Position> {}
 
@@ -66,6 +67,7 @@ const App: React.FC = () => {
   return (
     <div className={styles.game_box}>
       <h1 className={styles.game_title}>Snake game</h1>
+
       <div className={styles.grid}>
         {intersectsWithItself ? (
           <YouDied cb={tryAgain} />
@@ -83,6 +85,10 @@ const App: React.FC = () => {
           ))
         )}
       </div>
+      <div className={styles.keys}>
+        <Keys />
+      </div>
+      <a href="https://github.com/vibecode/snake-game-web">Source code</a>
     </div>
   )
 }

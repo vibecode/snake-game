@@ -7,6 +7,7 @@ $pixel-size: 20px;
 }
 
 .game_title {
+  margin-top: 48px;
   font-size: 18px;
   color: grey;
 }
@@ -57,4 +58,9 @@ $pixel-size: 20px;
 .food {
   composes: pixel;
   color: red;
+}
+
+.keys {
+  width: 80px;
+  margin: 20px 0;
 }
