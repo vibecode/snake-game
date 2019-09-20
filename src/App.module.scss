@@ -10,6 +10,10 @@ $pixel-size: 20px;
   margin-top: 48px;
   font-size: 18px;
   color: grey;
+
+  @media (max-width: 425px) {
+    margin-top: 10px;
+  }
 }
 
 .grid {
@@ -20,7 +24,7 @@ $pixel-size: 20px;
   border: 1px solid grey;
   width: $pixel-size * 16;
   height: $pixel-size * 16;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 
 .row {
@@ -68,4 +72,9 @@ $pixel-size: 20px;
 .keys {
   width: 80px;
   margin: 20px 0;
+}
+
+.link {
+  display: block;
+  margin-bottom: 20px;
 }

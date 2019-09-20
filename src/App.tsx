@@ -104,7 +104,12 @@ const App: React.FC = () => {
         leftCb={onLeftTouch}
         rightCb={onRightTouch}
       />
-      <a href="https://github.com/vibecode/snake-game-web">Source code</a>
+      <a
+        className={styles.link}
+        href="https://github.com/vibecode/snake-game-web"
+      >
+        Source code
+      </a>
     </div>
   )
 }
