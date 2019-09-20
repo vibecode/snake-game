@@ -16,6 +16,7 @@ const App: React.FC = () => {
     initialSnake
   )
   const [direction, setDirection] = useState<Position>(DIRECTION.LEFT)
+  const [score, setScore] = useState(0)
   const [gameOver, setGameOver] = useState(false)
 
   const handleKeyPress = useCallback((ev: KeyboardEvent) => {
@@ -53,7 +54,9 @@ const App: React.FC = () => {
 
   useInterval(
     () => {
-      setSnakeSegments(segments => newSnakePosition(segments, direction))
+      setSnakeSegments(segments =>
+        newSnakePosition(segments, direction, score, setScore)
+      )
     },
     gameOver ? null : 100
   )
@@ -61,6 +64,7 @@ const App: React.FC = () => {
   const tryAgain = () => {
     setSnakeSegments(initialSnake)
     setDirection(DIRECTION.LEFT)
+    setScore(0)
     setGameOver(false)
   }
 
@@ -80,7 +84,7 @@ const App: React.FC = () => {
   return (
     <div className={styles.game_box}>
       <h1 className={styles.game_title}>Snake game</h1>
-
+      <p className={styles.score}>Score: {score}</p>
       <div className={styles.grid}>
         {intersectsWithItself ? (
           <YouDied cb={tryAgain} />

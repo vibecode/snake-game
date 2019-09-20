@@ -1,6 +1,7 @@
 import { FIELD_SIZE } from './types'
 import { Position } from './types'
 import { SnakeSegments } from './App'
+import { Dispatch } from 'react'
 
 const limitByField = (x: number) => {
   if (x >= FIELD_SIZE) {
@@ -26,7 +27,9 @@ const collidesWithFood = (head: Position, foodItem: Position) => {
 
 export const newSnakePosition = (
   segments: SnakeSegments,
-  direction: Position
+  direction: Position,
+  score: number,
+  setScore: Dispatch<number>
 ) => {
   const [head] = segments
   const newHead = {
@@ -35,7 +38,7 @@ export const newSnakePosition = (
   }
   if (collidesWithFood(newHead, foodItem)) {
     foodItem = getFoodItem()
-
+    setScore(score + 1)
     return [newHead, ...segments]
   } else {
     return [newHead, ...segments.slice(0, -1)]

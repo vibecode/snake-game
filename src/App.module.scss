@@ -16,6 +16,12 @@ $pixel-size: 20px;
   }
 }
 
+.score {
+  font-size: 14px;
+  color: grey;
+  margin: 4px;
+}
+
 .grid {
   display: flex;
   flex-direction: column;
