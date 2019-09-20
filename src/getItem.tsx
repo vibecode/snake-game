@@ -1,7 +1,7 @@
 import React from 'react'
 import { foodItem } from './calcPositions'
 import { SnakeSegments } from './App'
-import { ReactComponent as Apple } from './Apple.svg'
+import { ReactComponent as Apple } from './img/Apple.svg'
 import styles from './App.module.scss'
 
 export const getItem = (x: number, y: number, snakeSegments: SnakeSegments) => {

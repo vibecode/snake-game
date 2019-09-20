@@ -4,8 +4,8 @@ import { useInterval } from './useInterval'
 import { newSnakePosition } from './calcPositions'
 import { getItem } from './getItem'
 import YouDied from './YouDied'
+import Keyboard from './Keyboard'
 import styles from './App.module.scss'
-import { ReactComponent as Keys } from './Keys.svg'
 
 export interface SnakeSegments extends Array<Position> {}
 
@@ -64,6 +64,19 @@ const App: React.FC = () => {
     setGameOver(false)
   }
 
+  const onUpTouch = () => {
+    setDirection(DIRECTION.TOP)
+  }
+  const onDownTouch = () => {
+    setDirection(DIRECTION.BOTTOM)
+  }
+  const onLeftTouch = () => {
+    setDirection(DIRECTION.LEFT)
+  }
+  const onRightTouch = () => {
+    setDirection(DIRECTION.RIGHT)
+  }
+
   return (
     <div className={styles.game_box}>
       <h1 className={styles.game_title}>Snake game</h1>
@@ -85,9 +98,12 @@ const App: React.FC = () => {
           ))
         )}
       </div>
-      <div className={styles.keys}>
-        <Keys />
-      </div>
+      <Keyboard
+        upCb={onUpTouch}
+        downCb={onDownTouch}
+        leftCb={onLeftTouch}
+        rightCb={onRightTouch}
+      />
       <a href="https://github.com/vibecode/snake-game-web">Source code</a>
     </div>
   )
