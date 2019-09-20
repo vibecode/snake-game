@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/snake-game/static/css/main.b7d89081.chunk.css",
+    "main.js": "/snake-game/static/js/main.7e19fd51.chunk.js",
+    "main.js.map": "/snake-game/static/js/main.7e19fd51.chunk.js.map",
+    "runtime~main.js": "/snake-game/static/js/runtime~main.0da671ed.js",
+    "runtime~main.js.map": "/snake-game/static/js/runtime~main.0da671ed.js.map",
+    "static/js/2.f91f8c78.chunk.js": "/snake-game/static/js/2.f91f8c78.chunk.js",
+    "static/js/2.f91f8c78.chunk.js.map": "/snake-game/static/js/2.f91f8c78.chunk.js.map",
+    "index.html": "/snake-game/index.html",
+    "precache-manifest.74a3cdcf14a7a70a7c29a77b97d664ae.js": "/snake-game/precache-manifest.74a3cdcf14a7a70a7c29a77b97d664ae.js",
+    "service-worker.js": "/snake-game/service-worker.js",
+    "static/css/main.b7d89081.chunk.css.map": "/snake-game/static/css/main.b7d89081.chunk.css.map",
+    "static/media/Apple.9838ea6b.svg": "/snake-game/static/media/Apple.9838ea6b.svg",
+    "static/media/Keys.cb68bc3a.svg": "/snake-game/static/media/Keys.cb68bc3a.svg"
+  }
+}
