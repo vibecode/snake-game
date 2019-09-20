@@ -26,13 +26,17 @@ $pixel-size: 20px;
   display: flex;
 }
 
-.pixel {
+.pixel_base {
   display: flex;
   justify-content: center;
   align-items: center;
   width: $pixel-size;
   height: $pixel-size;
   background-color: none;
+}
+
+.pixel {
+  composes: pixel_base;
 }
 
 .pixel::before {
@@ -44,19 +48,19 @@ $pixel-size: 20px;
 }
 
 .snake_head {
-  composes: pixel;
+  composes: pixel_base;
   background-color: green;
   border: 1px solid white;
 }
 
 .snake_body {
-  composes: pixel;
+  composes: pixel_base;
   background-color: rgb(140, 200, 40);
   border: 1px solid white;
 }
 
 .food {
-  composes: pixel;
+  composes: pixel_base;
   color: red;
 }
 

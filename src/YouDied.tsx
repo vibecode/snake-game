@@ -9,7 +9,7 @@ const YouDied: React.FC<Props> = ({ cb }) => (
   <>
     <h1 className={styles.died}>You died</h1>
     <button className={styles.died_button} onClick={cb}>
-      Try again
+      Try not to eat yourself again
     </button>
   </>
 )

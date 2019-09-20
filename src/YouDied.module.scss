@@ -6,12 +6,13 @@
 .died_button {
   margin: 0 auto;
   padding: 8px 16px;
-  background-color: red;
-  color: white;
-  border: none;
+  border: 1px solid red;
+  color: red;
   font-size: 20px;
+  transition: border-color 200ms ease, color 200ms ease;
 }
 
 .died_button:hover {
-  background-color: darken(red, 5);
+  border-color: lighten(red, 30);
+  color: lighten(red, 30);
 }
