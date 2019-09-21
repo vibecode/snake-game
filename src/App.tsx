@@ -37,6 +37,19 @@ const App: React.FC = () => {
     }
   }, [])
 
+  const onUpTouch = () => {
+    setDirection(DIRECTION.TOP)
+  }
+  const onDownTouch = () => {
+    setDirection(DIRECTION.BOTTOM)
+  }
+  const onLeftTouch = () => {
+    setDirection(DIRECTION.LEFT)
+  }
+  const onRightTouch = () => {
+    setDirection(DIRECTION.RIGHT)
+  }
+
   useEffect(() => {
     window.addEventListener('keydown', handleKeyPress)
 
@@ -67,19 +80,6 @@ const App: React.FC = () => {
     setDirection(DIRECTION.LEFT)
     setScore(0)
     setGameOver(false)
-  }
-
-  const onUpTouch = () => {
-    setDirection(DIRECTION.TOP)
-  }
-  const onDownTouch = () => {
-    setDirection(DIRECTION.BOTTOM)
-  }
-  const onLeftTouch = () => {
-    setDirection(DIRECTION.LEFT)
-  }
-  const onRightTouch = () => {
-    setDirection(DIRECTION.RIGHT)
   }
 
   return (
