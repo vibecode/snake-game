@@ -20,6 +20,7 @@ const App: React.FC = () => {
   const [gameOver, setGameOver] = useState(false)
 
   const handleKeyPress = useCallback((ev: KeyboardEvent) => {
+    ev.preventDefault()
     const code = ev.code
 
     if (code === ARROW.UP) {
