@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react'
 import { DIRECTION, FIELD_ROW, ARROW, Position } from './types'
 import { useInterval } from './useInterval'
 import { newSnakePosition } from './calcPositions'
+import { getHighScoreFromStorage, setHighScoreToStorage } from './utils'
 import { getItem } from './getItem'
 import YouDied from './YouDied'
 import Keyboard from './Keyboard'
@@ -17,6 +18,7 @@ const App: React.FC = () => {
   )
   const [direction, setDirection] = useState<Position>(DIRECTION.LEFT)
   const [score, setScore] = useState(0)
+  const [highScore, setHighScore] = useState(0)
   const [gameOver, setGameOver] = useState(false)
 
   const handleKeyPress = useCallback((ev: KeyboardEvent) => {
@@ -63,6 +65,13 @@ const App: React.FC = () => {
   )
 
   if (intersectsWithItself && !gameOver) {
+    const highScore = getHighScoreFromStorage()
+    if (!highScore || highScore < score) {
+      setHighScore(score)
+      setHighScoreToStorage(score)
+    } else {
+      setHighScore(highScore)
+    }
     setGameOver(true)
   }
 
@@ -88,7 +97,7 @@ const App: React.FC = () => {
       <p className={styles.score}>Score: {score}</p>
       <div className={styles.grid}>
         {intersectsWithItself ? (
-          <YouDied cb={tryAgain} />
+          <YouDied cb={tryAgain} highScore={highScore} />
         ) : (
           FIELD_ROW.map(y => (
             <div className={styles.row} key={y}>
